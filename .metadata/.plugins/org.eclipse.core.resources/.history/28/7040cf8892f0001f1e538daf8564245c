@@ -1,0 +1,15 @@
+package model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class User<T> extends Person {
+
+	
+	private List<T> loans = new ArrayList<T>();
+	
+
+	public User(Integer idUser, String firstName, String lastName, LocalDate birthDate, String email) {
+		
+	}
+}

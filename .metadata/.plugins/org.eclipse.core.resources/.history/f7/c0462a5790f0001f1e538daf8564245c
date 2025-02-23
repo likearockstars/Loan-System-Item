@@ -1,0 +1,28 @@
+package model;
+
+public class Author {
+	
+	private String pseudonomy;
+	
+	public Author(String pseudonomy) {
+		
+		this.setPseudonomy(pseudonomy);
+	}
+	
+	public void setPseudonomy(String pseudonomy) {
+		
+		this.pseudonomy = pseudonomy;
+	}
+	
+	public String getPseudonoym() {
+		
+		return this.pseudonomy;
+	}
+
+	@Override
+	public String toString() {
+		return "Author [getPseudonoym()=" + getPseudonoym() + "]";
+	}
+
+	
+}

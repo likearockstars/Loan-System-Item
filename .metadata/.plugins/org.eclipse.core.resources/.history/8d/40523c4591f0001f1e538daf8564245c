@@ -1,0 +1,11 @@
+package model;
+
+public interface ServiceInformation {
+	
+	/**
+	 * Method responsible for returning the person's loan history
+	 * @param person
+	 * @return
+	 */
+	String getInformation(Person person);
+}

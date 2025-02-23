@@ -1,0 +1,13 @@
+package model;
+
+import java.time.LocalDate;
+
+abstract public class Person {
+	
+	protected Integer idUser;
+	private String firstName;
+	private String lastName;
+	private LocalDate birthDate;
+	private String email;
+
+}

@@ -1,0 +1,10 @@
+package model;
+
+public interface ServiceInformation {
+	
+	/**
+	 * @param person
+	 * @return
+	 */
+	String getInformation(Person person);
+}

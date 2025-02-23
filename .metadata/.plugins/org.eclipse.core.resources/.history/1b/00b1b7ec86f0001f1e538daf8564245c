@@ -1,0 +1,19 @@
+package model;
+
+import java.time.LocalDate;
+
+abstract public class Item {
+
+	protected String item;
+	protected String describe;
+	protected Double price;
+	protected LocalDate dateRelease;
+	protected Author author;
+	protected String genre;
+	protected String publisher;
+	protected Boolean isBorrowed;
+	
+	public Item(String item, String describe, Double price, LocalDate dateRelease, Author author, String genre, String publisher) {
+		
+	}
+}

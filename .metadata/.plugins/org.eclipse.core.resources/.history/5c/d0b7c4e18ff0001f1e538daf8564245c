@@ -1,0 +1,6 @@
+package model;
+
+public interface ServiceLoan {
+
+	void loanItem(Item item, Person person);
+}

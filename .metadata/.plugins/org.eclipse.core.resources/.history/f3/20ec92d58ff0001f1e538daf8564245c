@@ -1,0 +1,6 @@
+package model;
+
+public interface ServiceInformation {
+	
+	String getInformation(Person person);
+}

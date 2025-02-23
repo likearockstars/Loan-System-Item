@@ -1,0 +1,31 @@
+package model;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+public class User<T> extends Person {
+
+	
+	private List<LoanItem> loans = new ArrayList<LoanItem>();
+	
+
+	/**
+	 * @param idUser
+	 * @param firstName
+	 * @param lastName
+	 * @param birthDate
+	 * @param email
+	 */
+	public User(Integer idUser, String firstName, String lastName, LocalDate birthDate, String email) {
+		super(idUser,firstName,lastName,birthDate,email);
+	}
+	
+	/**
+	 * @return Returns a list of items
+	 */
+	public List<LoanItem> getLoans(){
+		
+		return this.loans;
+	}
+}

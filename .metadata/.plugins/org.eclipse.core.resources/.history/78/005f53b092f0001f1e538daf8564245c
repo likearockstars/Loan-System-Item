@@ -1,0 +1,12 @@
+package model;
+
+public interface ServiceLoan<T> {
+
+	/**
+	 * Method responsible for being a generic loan items
+	 * 
+	 * @param item
+	 * @param person
+	 */
+	void loanItem(T t, Person person);
+}
