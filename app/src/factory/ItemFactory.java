@@ -36,7 +36,6 @@ public class ItemFactory {
 	 * @return Responsible for creating an instance of a book
 	 */
 	public Book createBook(Integer idItem, String title, String describe, Double price, Author author, LocalDate dateRelease, String genre, String publisher, String ISBN, Integer pageCounts) {
-		
 		return new Book(idItem,title,describe,price,dateRelease,author,genre,publisher,ISBN,pageCounts);
 	}
 	
@@ -55,7 +54,6 @@ public class ItemFactory {
 	 */
 	public Magazine createMagazine(Integer idItem, String title, String describe, Double price, Author author, LocalDate dateRelease, String genre, String publisher, 
 	Integer editionNumber, Integer numberPages) {
-		
 		return new Magazine(idItem, title, describe, price, dateRelease, author, genre, publisher, editionNumber, numberPages);
 	}
 	
@@ -75,7 +73,6 @@ public class ItemFactory {
 	 */
 	public DVD createDVD(Integer idItem, String title, String describe, Double price, Author author, LocalDate dateRelease, String genre, String publisher,
 	Integer numberDVD, String recordLabel, Integer numberTracks) {
-		
 		return new DVD(idItem, title, describe, price, dateRelease, author, genre, publisher, numberDVD, recordLabel, numberTracks);
 	}
 

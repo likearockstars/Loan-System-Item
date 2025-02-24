@@ -41,7 +41,6 @@ public class PersonFactory {
 	 * @return Responsible for creating an instance of author
 	 */
 	public Author createAuthor(String firstName, String lastName, LocalDate birthDate, String email, String pseudonomy, Integer idAuthor) {
-		
 		return new Author(firstName, lastName, birthDate, email, pseudonomy, idAuthor);
 	}
 

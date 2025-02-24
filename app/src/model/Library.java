@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import exception.ItemNotFoundException;
+import exception.LoanException;
+
 public class Library implements LoanService,LoanInformationService{
 
 	List<Item> items;
@@ -45,9 +48,11 @@ public class Library implements LoanService,LoanInformationService{
 	 *@param item
 	 *@param user
 	 *@param returnDate
+	 *@throws LoanException
+	 *@throws ItemNotFoundException
 	 */
 	@Override
-	public void loanItem(Item item, User user, LocalDateTime returnDate) {
+	public void loanItem(Item item, User user, LocalDateTime returnDate) throws LoanException, ItemNotFoundException{
 		
 		// Inicializa a variável de empréstimo
 		LoanItem loan = null;
@@ -67,12 +72,11 @@ public class Library implements LoanService,LoanInformationService{
 	            return; // Adicionado para sair do método após encontrar o item
 	            
 	        } else {
-	        	
-	            throw new IllegalArgumentException("Este item não existe na biblioteca");
+	            throw new ItemNotFoundException("O item não está armazenado na bíblioteca!");
 	        }
 	    } else {
 	    	
-	        throw new IllegalArgumentException("Esse item já está emprestado!");
+	        throw new LoanException("Este item já está empréstado para algum outro usuário!");
 	    }
 	}
 		
