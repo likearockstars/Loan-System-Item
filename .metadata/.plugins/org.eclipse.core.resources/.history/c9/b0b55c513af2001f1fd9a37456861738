@@ -1,0 +1,71 @@
+package model;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Library implements LoanService,LoanInformationService{
+
+	List<Item> items = new ArrayList<Item>();
+	private static Integer borrowedItemCount = 0;
+	
+	public Library() {
+			
+	}
+
+	/**
+	 * Este método imprime todos os itens que estão associados ao usuário por emprestimo!
+	 *@param user
+	 */
+	@Override
+	public void getInformation(User user) {
+		for(LoanItem item : user.getLoans()) {
+			
+			System.out.println(item.toString());
+		}
+	}
+
+	/**
+	 *Este método permite um que usuário realize o emprétimo de um item da biblioteca. Ele verifica a disponibilidade do item, cria um registro de emprestimo e o associa ao usuário.
+	 *@param item
+	 *@param user
+	 *@param returnDate
+	 */
+	@Override
+	public void loanItem(Item item, User user,LocalDateTime returnDate) {
+		// TODO Auto-generated method stub
+		
+		if(item.getIsBorrowed().equals(false)) {
+			LoanItem loan = new LoanItem(item.getIdItem(),user.getIdUser(),returnDate);
+			user.getLoans().add(loan);
+			item.setIsBorrowed(true);
+			borrowedItemCount++;
+		}else {
+			
+			throw new IllegalArgumentException("Esse item já está emprestado!");
+		}
+		
+		
+	}
+
+	/**
+	 *Este método percorre todos os registros de empréstimos associados é faz a devolução do item, também diz que agora o livro está disponivel.
+ 	 *@param item
+	 *@param user
+	 *
+	 */
+	@Override
+	public void returnItem(Item item,User user) {
+		
+		for(LoanItem currentItem: user.getLoans()) {
+			
+			if(item.getIdItem() == currentItem.getIdItem()) {
+				user.getLoans().remove(currentItem);
+				item.setIsBorrowed(false);
+				borrowedItemCount--;
+			}
+		}
+		
+	}
+	
+}

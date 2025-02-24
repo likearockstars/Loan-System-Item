@@ -1,0 +1,94 @@
+package model;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Library implements LoanService,LoanInformationService{
+
+	List<Item> items;
+	private static Integer borrowedItemCount = 0;
+	
+	public Library() {
+	
+		items = new ArrayList<Item>();
+	}
+
+	/**
+	 * Este método imprime todos os itens que estão associados ao usuário por emprestimo!
+	 *@param user
+	 */
+	@Override
+	public void getInformation(User user) {
+		
+		for(Item currentItem : items) {
+			
+			for(LoanItem currentLoanItem : user.getLoans()) {
+				
+				if(currentItem.getIdItem().equals(currentLoanItem.getIdItem())) {
+					
+					System.out.println(currentItem.toString());
+				}
+			}
+		}
+	}
+
+	/**
+	 *Este método permite um que usuário realize o emprétimo de um item da biblioteca. Ele verifica a disponibilidade do item, cria um registro de emprestimo e o associa ao usuário.
+	 *@param item
+	 *@param user
+	 *@param returnDate
+	 */
+	@Override
+	public void loanItem(Item item, User user,LocalDateTime returnDate) {
+		// TODO Auto-generated method stub
+		
+		if(item.getIsBorrowed().equals(false)) {
+			// Criamos um registro de empréstimo para o usuário com uma associação de item e usuário.
+			LoanItem loan = new LoanItem(item.getIdItem(),user.getIdUser(),returnDate);
+			// Adicionamos esse registro ao usuário.
+			user.getLoans().add(loan);
+			// Removermos esse item da biblioteca.
+			items.remove(item);
+			// Colocamos o status desse livro como empréstado.
+			item.setIsBorrowed(true);
+			// Dizemos que item da bíblioteca foi empréstado.=
+			borrowedItemCount++;
+		}else {
+			
+			throw new IllegalArgumentException("Esse item já está emprestado!");
+		}
+		
+		
+	}
+
+	/**
+	 *Este método percorre todos os registros de empréstimos associados é faz a devolução do item, também diz que agora o livro está disponivel.
+ 	 *@param item
+	 *@param user
+	 *
+	 */
+	@Override
+	public void returnItem(Item item,User user) {
+		
+		for(LoanItem currentItem: user.getLoans()) {
+			
+			if(item.getIdItem() == currentItem.getIdItem()) {
+				user.getLoans().remove(currentItem);
+				item.setIsBorrowed(false);
+				borrowedItemCount--;
+			}
+		}
+		
+	}
+	
+	
+	public void addItem(Item item) {
+		items.add(item);
+	}
+	
+	public void removeItem(Item item) {
+		items.remove(item);
+	}
+	
+}

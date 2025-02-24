@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User<T> extends Person {
+public class User extends Person {
 
 	
 	private Integer idUser;
@@ -40,4 +40,16 @@ public class User<T> extends Person {
 		
 		return this.idUser;
 	}
+
+
+	@Override
+	public String toString() {
+		return "User [getLoans()=" + getLoans() + ", getIdUser()=" + getIdUser() + ", getFirstName()=" + getFirstName()
+				+ ", getLastName()=" + getLastName() + ", getLocalDate()=" + getLocalDate() + ", getEmail()="
+				+ getEmail() + ", toString()=" + super.toString() + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + "]";
+	}
+	
+	
+	
 }

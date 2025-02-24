@@ -4,17 +4,27 @@ import java.time.LocalDate;
 
 public class Author extends Person {
 	
+	private Integer idAuthor;
 	private String pseudonomy;
 	
 	
 	/**
 	 * @param pseudonomy
 	 */
-	public Author(Integer idUser, String firstName, String lastName,LocalDate birthDate, String email, String pseudonomy) {
+	/**
+	 * @param firstName
+	 * @param lastName
+	 * @param birthDate
+	 * @param email
+	 * @param pseudonomy
+	 * @param idAuthor
+	 */
+	public Author(String firstName, String lastName,LocalDate birthDate, String email, String pseudonomy, Integer idAuthor) {
 		
 		// Constructor of super class Person
-		super(idUser,firstName,lastName,birthDate,email);
+		super(firstName,lastName,birthDate,email);
 		this.setPseudonomy(pseudonomy);
+		this.idAuthor = idAuthor;
 	}
 	
 	/**
@@ -31,6 +41,14 @@ public class Author extends Person {
 	public String getPseudonoym() {
 		
 		return this.pseudonomy;
+	}
+	
+	/**
+	 * @return Returns the identification of the author
+	 */
+	public Integer getIdAuthor() {
+		
+		return this.idAuthor;
 	}
 
 	@Override

@@ -522,3 +522,4 @@
 2025-02-23 16:50:21,391 [main] INFO  o.b.core.jvm.BufferHandler - (BufferHandler.java:141) - default allocation mode: ByteBuffer::allocateDirect
 2025-02-23 16:50:21,394 [main] INFO  org.burningwave.core.Cache - (Cache.java:76) - Building cache
 2025-02-23 16:50:21,416 [main] INFO  o.b.c.a.StaticComponentContainer - (StaticComponentContainer.java:443) - org.burningwave.core.assembler.StaticComponentContainer initialized in 0.1323926 seconds
+2025-02-23 17:50:46,007 [Worker-20: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.

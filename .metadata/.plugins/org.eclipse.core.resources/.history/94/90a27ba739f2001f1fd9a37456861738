@@ -1,0 +1,19 @@
+package application;
+
+import java.time.LocalDate;
+
+import model.Author;
+import model.Book;
+import model.User;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		
+		User user = new User("Davi","Nunes",LocalDate.now(),"davijnunesdeveloper@gmail.com",1);
+		Author author = new Author("Fernando","Henrique",LocalDate.now(),"fernandohenrique@gmail","ferplay",2);
+		
+		Book book = new Book(1,"Linguagem Java","Livro de programação Java",100.00,LocalDate.now(),author,"Tecnológia","Novatec","20202020",300);
+	}
+}

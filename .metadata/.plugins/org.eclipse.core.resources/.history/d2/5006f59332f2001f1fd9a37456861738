@@ -1,0 +1,13 @@
+package model;
+
+public interface LoanService {
+
+	/**
+	 * Method responsible for being a generic loan items
+	 * 
+	 * @param item
+	 * @param person
+	 */
+	void loanItem(Item item, User user);
+	void returnItem(Item item, User user);
+}

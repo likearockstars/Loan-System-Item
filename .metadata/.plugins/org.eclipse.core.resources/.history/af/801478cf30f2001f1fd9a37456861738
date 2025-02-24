@@ -1,0 +1,32 @@
+package model;
+
+import java.time.LocalDate;
+
+public class DVD  extends Item{
+	
+	private Integer numberDVD;
+	private String recordLabel;
+	private Integer numberTracks;
+	
+	
+	public DVD(String title, String describe, Double price, LocalDate dateRelease,Author author, String genre, String publisher) {
+		
+		super(title,describe,price,dateRelease,author,genre,publisher);
+		this.numberDVD = numberDVD;
+	}
+	
+	public Integer getNumberDVD() {
+		
+		return this.numberDVD;
+	}
+	
+	public void setRecordLabel(String recordLabel) {
+		
+		this.recordLabel = recordLabel;
+	}
+	public String getRecordLabel() {
+		
+		return this.recordLabel;
+	}
+	
+}

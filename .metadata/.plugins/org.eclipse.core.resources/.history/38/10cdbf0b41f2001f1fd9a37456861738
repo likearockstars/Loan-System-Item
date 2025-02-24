@@ -1,0 +1,107 @@
+package model;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Library implements LoanService,LoanInformationService{
+
+	List<Item> items;
+	private static Integer borrowedItemCount = 0;
+	
+	public Library() {
+	
+		items = new ArrayList<Item>();
+	}
+
+	/**
+	 *@param user
+	 */
+	@Override
+	public void getInformation(User user) {
+	    // Cria um HashMap para mapear IDs de itens para itens
+	    Map<Integer, Item> itemMap = new HashMap<>();
+	    for (Item currentItem : items) {
+	        itemMap.put(currentItem.getIdItem(), currentItem);
+	    }
+
+	    // Percorre os registros de empréstimos do usuário
+	    for (LoanItem currentLoanItem : user.getLoans()) {
+	        // Obtém o item correspondente do HashMap
+	        Item item = itemMap.get(currentLoanItem.getIdItem());
+
+	        // Se o item foi encontrado, imprime suas informações
+	        if (item != null) {
+	            System.out.println(item.toString());
+	        }else {
+	        	System.out.println("Item não encontrado");
+	        }
+	    }
+
+	}
+
+	/**
+	 *@param item
+	 *@param user
+	 *@param returnDate
+	 */
+	@Override
+	public void loanItem(Item item, User user, LocalDateTime returnDate) {
+		System.out.println("Teste!");
+	    if (!item.getIsBorrowed()) {
+	    	System.out.println("Teste2");
+	        if (items.contains(item)) {
+	        	System.out.println(item.toString());
+	            LoanItem loan = new LoanItem(item.getIdItem(), user.getIdUser(), returnDate);
+	            user.getLoans().add(loan);
+	            item.setIsBorrowed(true);
+	            borrowedItemCount++;
+	            return; // Adicionado para sair do método após encontrar o item
+	        } else {
+	            throw new IllegalArgumentException("Este item não existe na biblioteca");
+	        }
+	    } else {
+	        throw new IllegalArgumentException("Esse item já está emprestado!");
+	    }
+	}
+		
+		
+
+	/**
+ 	 *@param item
+	 *@param user
+	 *
+	 */
+	@Override
+	public void returnItem(Item item,User user) {
+		
+		// Iremos percorrer a lista de empréstimos associados ao usuário
+		for(LoanItem currentLoanItem: user.getLoans()) {
+			
+			// Iremos verificar se o item que pretendemos remover está associado ao registro de empréstimos do usuário
+			if(item.getIdItem().equals(currentLoanItem.getIdItem())) {
+				// Iremos trocar o status para disponivel do item
+				item.setIsBorrowed(false);
+				// Iremos remover da lista de registros de empréstismo do usuário
+				user.getLoans().remove(currentLoanItem);
+				// Iremos delvover o item a bíblioteca.
+				items.add(item);
+				
+			}
+		}
+		
+		
+	}
+	
+	
+	public void addItem(Item item) {
+		items.add(item);
+	}
+	
+	public void removeItem(Item item) {
+		items.remove(item);
+	}
+	
+}

@@ -1,0 +1,16 @@
+package model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Library implements LoanService,LoanInformationService{
+
+	List<Item> itens;
+	private static final Integer borrowedItemCount = null;
+	
+	public Library() {
+		
+		itens = new ArrayList<Item>();		
+	}
+	
+}

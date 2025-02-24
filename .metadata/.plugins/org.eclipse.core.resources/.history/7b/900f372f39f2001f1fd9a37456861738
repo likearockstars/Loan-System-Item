@@ -1,0 +1,14 @@
+package application;
+
+import java.time.LocalDate;
+
+import model.User;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		
+		User user = new User("Davi","Nunes",LocalDate.now(),"davijnunesdeveloper@gmail.com",1);
+	}
+}

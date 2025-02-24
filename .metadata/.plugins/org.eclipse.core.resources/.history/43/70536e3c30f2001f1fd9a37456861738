@@ -1,0 +1,8 @@
+package model;
+
+public class DVD {
+	
+	private Integer numberDVD;
+	private String recordLabel;
+	private Integer numberTracks;
+}

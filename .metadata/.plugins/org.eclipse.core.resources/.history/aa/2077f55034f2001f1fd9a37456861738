@@ -1,0 +1,37 @@
+package model;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Library implements LoanService,LoanInformationService{
+
+	List<Item> itens;
+	private static final Integer borrowedItemCount = null;
+	
+	public Library() {
+		
+		itens = new ArrayList<Item>();		
+	}
+
+	@Override
+	public String getInformation(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void loanItem(Item item, User user,LocalDateTime returnDate) {
+		// TODO Auto-generated method stub
+		
+		
+		LoanItem loan = new LoanItem(item.getIdItem(),user.getIdUser(),returnDate);
+	}
+
+	@Override
+	public void returnItem(User user) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

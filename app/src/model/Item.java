@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 abstract public class Item {
 	
-	
+	protected Integer idItem;
 	protected String title;
 	protected String describe;
 	protected Double price;
@@ -17,7 +17,7 @@ abstract public class Item {
 	
 	/*
 	 * Initializes the item with the attributes needed to compose an item
-	 * 
+	 *@IdItem 				 -> Identification of item
 	 *@param title	 		 -> Name of title
 	 *@param describe 		 -> Describe of item
 	 *@param price			 -> Price of item
@@ -27,8 +27,9 @@ abstract public class Item {
 	 *@param publisher		 -> Publisher of item
 	 */
 	
-	public Item(String title, String describe, Double price, LocalDate dateRelease, Author author, String genre, String publisher) {
+	public Item(Integer idItem,String title, String describe, Double price, LocalDate dateRelease, Author author, String genre, String publisher) {
 		
+		this.idItem = idItem;
 		this.setTitle(title);
 		this.setDescribe(describe);
 		this.setPrice(price);
@@ -39,6 +40,14 @@ abstract public class Item {
 		this.isBorrowed = false;
 	}
 	
+	
+	/**
+	 * @return Returns the identification of item
+	 */
+	public Integer getIdItem() {
+		
+		return this.idItem;
+	}
 	
 	/**
 	 * @param title -> Title of item
@@ -123,7 +132,24 @@ abstract public class Item {
 		
 		return this.publisher;
 	}
+	
+	/**
+	 * @param isBorrowed 
+	 */
+	public void setIsBorrowed(Boolean isBorrowed) {
+		
+		this.isBorrowed = isBorrowed;
+	}
 
+	
+	/**
+	 * @return Returns whether the item has already been borrowed
+	 */
+	public Boolean getIsBorrowed() {
+		
+		return this.isBorrowed;
+	}
+	
 	@Override
 	public String toString() {
 		return "Item [getTitle()=" + getTitle() + ", getDescribe()=" + getDescribe() + ", getPrice()=" + getPrice()
